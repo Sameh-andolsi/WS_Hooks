@@ -1,0 +1,17 @@
+.titre{
+    font-size: larger;
+    font-family: cursive;
+}
+.image{
+    width: 450px;
+    height: 350px;
+  
+}
+.desc{
+    font-size: small;
+    font-family: cursive; 
+}
+
+.stars{
+    margin-left: 100px;
+}
