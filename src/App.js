@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -56,6 +55,15 @@ function App() {
         "The world's deadliest assassin and New York's biggest screw-up are mistaken for each other at an Airbnb rental.",
       rating: 4,
     },
+    {
+      id: uuidv4(),
+      title: "Winnie-the-Pooh",
+      posterURL:
+        "https://upload.wikimedia.org/wikipedia/en/7/74/Winnie_the_Pooh%2C_Blood_and_Honey_Film_Poster.jpg",
+      description:
+        "Winnie-the-Pooh: Blood and Honey is a 2023 British independent slasher film written, directed and produced by Rhys Frake-Waterfield. The film serves as a horror retelling of A. A. Milne and E. H. Shep…",
+      rating: 4,
+    },
   ]);
 
   const [titleSearch, setTitleSearch] = useState("");
@@ -74,17 +82,17 @@ useEffect(() => {
 
 
 
-  console.log(movies)
+ 
   return (
     <div className="App">
       <MyNav
-        setMovies={setMovies}
-        movies={movies}
+        setFiltredMovies={setFiltredMovies}
         setTitleSearch={setTitleSearch}
         setRatingSearch={setRatingSearch}
         ratingSearch={ratingSearch}
+        filtredMovies={filtredMovies}
       />
-      <MovieList movies={filtredMovies} />
+      <MovieList filtredMovies={filtredMovies} />
     </div>
   );
 }

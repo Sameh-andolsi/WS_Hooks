@@ -1,16 +1,11 @@
+
 import React from "react";
 import { Navbar, Container, Button, Modal } from "react-bootstrap";
 import ReactStars from "react-stars";
 import { useState } from "react";
 import "./MyNav.css";
 import { v4 as uuidv4 } from "uuid";
-const MyNav = ({
-  setMovies,
-  movies,
-  setTitleSearch,
-  setRatingSearch
-  
-}) => {
+const MyNav = ({ filtredMovies, setFiltredMovies, setTitleSearch, setRatingSearch }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,23 +14,27 @@ const MyNav = ({
   const [newMovie, setNewMovie] = useState({
     id: uuidv4(),
     title: "",
-    posterURl: "",
+    posterURL: "",
     description: "",
-    rating: 0,
+    rating: 1,
   });
 
   const handleChange = (e) => {
     setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
+    console.log(newMovie, "in the inputchange")
   };
 
   const handleSave = () => {
-    if (newMovie.rating >= 1 && newMovie.rating <= 5) {
-      setMovies([...movies, newMovie]);
-      handleClose();
-    } else {
-      alert("the movie rating should be between 1 and 5");
+if (newMovie.rating >= 1 && newMovie.rating <= 5) {
+  setFiltredMovies([...filtredMovies, newMovie]);
+  handleClose();
+} else {
+  alert("the rating should be between 1 and 5");
+}
+console.log(newMovie," in the save button")
+  
     }
-  };
+ 
 
   const handleTitleSearch = (e) => {
     setTitleSearch(e.target.value);
@@ -44,7 +43,6 @@ const MyNav = ({
   const handleRatingSearch = (new_rating) => {
     setRatingSearch(new_rating);
   };
-
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -99,6 +97,7 @@ const MyNav = ({
           <label for="title">title:</label>
           <br />
           <input
+            className="inpt"
             name="title"
             type="text"
             placeholder="Enter the  title "
@@ -109,6 +108,7 @@ const MyNav = ({
           <label for="posterURL">posterURL:</label>
           <br />
           <input
+            className="inpt"
             name="posterURL"
             type="text"
             placeholder="Enter the  poster Url"
@@ -119,6 +119,7 @@ const MyNav = ({
           <label for="description">description:</label>
           <br />
           <textarea
+            className="inpt"
             type="text"
             id="description"
             name="description"
@@ -130,24 +131,24 @@ const MyNav = ({
           <label for="rating">rating:</label>
           <br />
           <input
-            name=" rating"
+            className="inpt"
+            name="rating"
             type="number"
-            placeholder="Enter the  Rating"
             onChange={handleChange}
           />
           <br />
         </Modal.Body>
         <Modal.Footer>
-          <Button className="btn" variant="primary" onClick={handleSave}>
+          <Button className="btn2" variant="primary" onClick={handleSave}>
             Save
           </Button>
-          <Button variant="secondary" className="btn" onClick={handleClose}>
+          <Button variant="secondary" className="btn2" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
     </div>
   );
-};
 
+  }
 export default MyNav;

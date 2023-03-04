@@ -27,12 +27,7 @@
  color: #b8b8c0;
 }
 
-.input:focus, input:hover {
- outline: none;
- border-color: rgba(216, 128, 162, 0.4);
- background-color: #fff;
- box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
-}
+
 
 .icon {
  position: absolute;
@@ -65,4 +60,19 @@ button:hover {
  background-color:rgb(83, 115, 174);
 }
 
+.inpt {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: #ccc;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+}
 
+.inpt:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696,
+             -13px -13px 100px #ffffff;
+}
